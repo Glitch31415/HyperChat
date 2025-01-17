@@ -3,7 +3,6 @@
   import { onDestroy, onMount, afterUpdate, tick } from 'svelte';
   import { fade } from 'svelte/transition';
   import dark from 'smelte/src/dark';
-  import WelcomeMessage from './WelcomeMessage.svelte';
   import Message from './Message.svelte';
   import PinnedMessage from './PinnedMessage.svelte';
   import ChatSummary from './ChatSummary.svelte';
@@ -440,9 +439,7 @@
           on:mouseout={() => { setHover(null); }}
           on:blur={() => { setHover(null); }}
         >
-          {#if isWelcome(action)}
-            <WelcomeMessage />
-          {:else if isSuperchat(action)}
+          {#if isSuperchat(action)}
             <PaidMessage message={action.message} />
           {:else if isMembership(action)}
             <MembershipItem message={action.message} />
